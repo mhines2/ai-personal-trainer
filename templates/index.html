@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Trainer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Sign Up for Your AI Personal Fitness Trainer</h1>
+    <form action="/signup" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="fitness_goal">Fitness Goal:</label>
+        <input type="text" id="fitness_goal" name="fitness_goal" required>
+
+        <label for="preferences">Preferences (e.g., cardio, strength):</label>
+        <input type="text" id="preferences" name="preferences" required>
+        
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>
