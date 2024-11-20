@@ -1,0 +1,63 @@
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignore virtual environment folders
+env/
+venv/
+ENV/
+.venv/
+
+# Ignore environment variable files
+.env
+.env.*
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+
+# Ignore compiled libraries
+*.so
+*.dll
+
+# Ignore cache files
+*.cache
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+
+# Ignore pip dependency resolver cache
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Ignore static analysis tools
+.mypy_cache/
+.pylint.d/
+.pyre/
+bandit.yaml
+flake8.log
