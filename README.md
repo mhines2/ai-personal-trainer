@@ -61,15 +61,45 @@ The **AI Personal Trainer** is a Python application that generates personalized 
 ### Example Output
 
 ```plaintext
-Here is your personalized workout plan:
---------------------------------------------------
-Welcome, John! Here’s your workout plan for today:
+Welcome to the AI Personal Trainer!
 
-- Warm-up: 5 minutes of light cardio
+Enter your name: John
+Enter your fitness level (beginner/intermediate/advanced): beginner
+Enter your fitness goal (e.g., weight loss, muscle gain, general fitness): weight loss
+Enter available equipment (e.g., bodyweight, free-weights, full gym): bodyweight
+Enter the time you can dedicate per day (in minutes): 30
+Enter focus areas (e.g., cardio, core, arms, legs) separated by commas: cardio, core
+Any injuries to consider (type 'none' if no injuries): none
+
+Generating your initial personalized workout plan...
+
+Here is your initial workout plan:
+--------------------------------------------------
+- Warm-up: 5 minutes of light jogging in place
 - Circuit Training (repeat 3 times):
   1. Push-ups: 10 reps
   2. Bodyweight squats: 15 reps
   3. Plank: 30 seconds
-  4. Jumping jacks: 30 seconds
-- Cool-down: Stretching for 5 minutes
+  4. Mountain climbers: 20 seconds
+- Cool-down: 5 minutes of stretching
 --------------------------------------------------
+
+You: Can you add more focus on core exercises?
+
+Trainer: Sure! Here's an updated plan focusing on your core:
+- Warm-up: 5 minutes of dynamic stretches
+- Core Circuit (repeat 3 times):
+  1. Plank: 45 seconds
+  2. Side planks: 30 seconds per side
+  3. Bicycle crunches: 20 reps
+  4. Russian twists: 15 reps per side
+- Cool-down: 5 minutes of stretching (focus on abs and lower back)
+
+You: What should I eat before a workout?
+
+Trainer: For a pre-workout meal, consider eating a mix of carbs and protein, like a banana with peanut butter or a small bowl of oatmeal with fruit. Avoid heavy or greasy foods.
+
+You: exit
+
+Goodbye! Stay active and healthy!
+
