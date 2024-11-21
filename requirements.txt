@@ -1,2 +1,3 @@
 openai>=1.54.5
 python-dotenv>=1.0.0
+schedule>=1.2.0
