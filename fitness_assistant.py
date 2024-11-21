@@ -80,6 +80,7 @@ def chat_with_trainer(initial_preferences):
                 model="gpt-4o",
             )
             bot_reply = response.choices[0].message.content.strip()
+
             print(f"Trainer: {bot_reply}")
             
             # Append AI's response to conversation history
