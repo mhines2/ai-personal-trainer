@@ -8,7 +8,7 @@ load_dotenv()
 
 # Instantiate OpenAI client
 client = OpenAI(
-    api_key=os.environ.get("OPENAI_API_KEY")  # Ensure your API key is in .env file
+    api_key=os.environ.get("OPENAI_API_KEY")  # ensure your API key is in .env file
 )
 
 def get_initial_preferences():
@@ -54,7 +54,7 @@ def chat_with_trainer(initial_preferences):
     print("\nGenerating your initial personalized workout plan...\n")
     response = client.chat.completions.create(
         messages=messages,
-        model="gpt-4o",  # Or use another model you have access to
+        model="gpt-4o",  # or use another model you have access to
     )
     print("Here is your initial workout plan:")
     print("-" * 50)
@@ -71,6 +71,8 @@ def chat_with_trainer(initial_preferences):
         # Append user's message to conversation
         messages.append({"role": "user", "content": user_input})
         
+        print("\nPlease wait, loading response...\n") # notify user system is generating response
+
         # Generate chatbot's response
         try:
             response = client.chat.completions.create(
@@ -78,7 +80,6 @@ def chat_with_trainer(initial_preferences):
                 model="gpt-4o",
             )
             bot_reply = response.choices[0].message.content.strip()
-            print()
             print(f"Trainer: {bot_reply}")
             
             # Append AI's response to conversation history
