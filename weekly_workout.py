@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+This code file was the original version of the AI Personal Trainer chatbot so that users could interact with the AI trainer in a conversational manner.
+"""
+
 from dotenv import load_dotenv
 import os
 import json
@@ -13,7 +17,7 @@ client = OpenAI(
 )
 
 def generate_weekly_workout_plan(preferences):
-    """ Generate weekly workout plan using OpenAI API based on user preferences. """
+    """Generate weekly workout plan using OpenAI API based on user preferences."""
 
     messages = [
         {"role": "system", "content": "You are a world-famous personal fitness trainer. Create weekly workout plans based on user inputs."},
@@ -42,7 +46,7 @@ def generate_weekly_workout_plan(preferences):
 
 '''
 def load_current_day():
-    """ Load current day index from file or default to Day 1. """
+    """Load current day index from file or default to Day 1."""
 
     if os.path.exists("current_day.json"):
         with open("current_day.json", "r") as file:
@@ -50,7 +54,7 @@ def load_current_day():
     return 0  # start at Day 1 if file doesn't exist
 
 def save_current_day(day_index):
-    """ Save current day index to file. """
+    """Save current day index to file."""
 
     with open("current_day.json", "w") as file:
         json.dump({"day": day_index}, file)
@@ -59,7 +63,7 @@ def save_current_day(day_index):
 # because the weekly workout plan no longer follows a Day 1 to Day 7 structure. The weekly plan is now split by actual days of the week.
 
 def get_initial_preferences():
-    """ Collect user preferences for fitness trainer. """
+    """Collect user preferences for fitness trainer."""
 
     print("Welcome to the AI Personal Trainer!")
     print()
@@ -88,14 +92,14 @@ def get_initial_preferences():
     }
 
 def save_weekly_plan(weekly_plan):
-    """ Save weekly plan to JSON file. """
+    """Save weekly plan to JSON file."""
 
     with open("weekly_plan.json", "w") as file:
         json.dump(weekly_plan, file)
     print("\nWeekly workout plan saved to 'weekly_plan.json'\n")
 
 def print_workout_plan(weekly_plan):
-    """ Print weekly workout plan to standard output. """
+    """Print weekly workout plan to standard output."""
 
     print("Here is your weekly workout plan:\n")
     print("-" * 50)
@@ -103,7 +107,7 @@ def print_workout_plan(weekly_plan):
     print("-" * 50)
 
 def main():
-    """ Main function to run AI Personal Trainer program. """
+    """Main function to run AI Personal Trainer program."""
 
     preferences = get_initial_preferences()
     print("\nGenerating your weekly workout plan...\n")

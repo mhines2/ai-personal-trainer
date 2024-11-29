@@ -19,7 +19,7 @@ EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
 
 def send_email(to_email, subject, body):
-    """ Send email with generated workout plan. """
+    """Send email with generated workout plan."""
 
     from_email = EMAIL_ADDRESS
 
@@ -43,7 +43,7 @@ def send_email(to_email, subject, body):
 
 
 def load_weekly_plan():
-    """ Load weekly plan from JSON file. """
+    """Load weekly plan from JSON file."""
 
     if not os.path.exists("weekly_plan.json"):
         raise FileNotFoundError("Weekly plan not found. Please run 'weekly_workout.py' first to generate the plan.")
@@ -53,7 +53,7 @@ def load_weekly_plan():
 
 
 def extract_current_day_workout(weekly_plan):
-    """ Extract workout plan for current day of week. """
+    """Extract workout plan for current day of week."""
 
     days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     current_day = datetime.now().strftime("%A")  # get current day of the week
@@ -71,7 +71,7 @@ def extract_current_day_workout(weekly_plan):
 
 
 def send_daily_workout_email(preferences, weekly_plan):
-    """ Send workout for the current day via email. """
+    """Send workout for the current day via email."""
 
     workout_plan = extract_current_day_workout(weekly_plan)
 
@@ -87,7 +87,7 @@ def send_daily_workout_email(preferences, weekly_plan):
 
 
 def schedule_email_sending(preferences, weekly_plan, send_time="08:00"):
-    """ Schedule the email to be sent daily at the specified time. """
+    """Schedule the email to be sent daily at the specified time."""
 
     schedule.every().day.at(send_time).do(send_daily_workout_email, preferences, weekly_plan)
 
@@ -98,7 +98,7 @@ def schedule_email_sending(preferences, weekly_plan, send_time="08:00"):
 
 
 def main():
-    """ Main function to schedule daily workout emails. """
+    """Main function to schedule daily workout emails."""
     
     preferences = get_initial_preferences()
 

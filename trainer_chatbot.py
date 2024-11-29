@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This script was the original version of the AI Personal Trainer chatbot so that users could interact with the AI trainer in a conversational manner.
+This code file was the original version of the AI Personal Trainer chatbot so that users could interact with the AI trainer in a conversational manner.
 """
 
 from dotenv import load_dotenv
@@ -16,7 +16,7 @@ client = OpenAI(
 )
 
 def get_initial_preferences(): 
-    """ Collect user preferences for fitness trainer. """
+    """Collect user preferences for fitness trainer."""
 
     print("Welcome to the AI Personal Trainer!\n")
 
@@ -34,14 +34,14 @@ def get_initial_preferences():
         "fitness_level": fitness_level,
         "goal": goal,
         "equipment": equipment,
-        "time_per_day": time_per_day,
+        "time_per_day": time_per_day, 
         "focus_areas": [area.strip() for area in focus_areas.split(",")],
         "injury": injury
     }
     return user_preferences
 
 def chat_with_trainer(initial_preferences):
-    """ Run chat session with AI personal trainer. """
+    """Run chat session with AI personal trainer."""
     
     # Initialize conversation
     messages = [
@@ -92,7 +92,7 @@ def chat_with_trainer(initial_preferences):
             print(f"An error occurred: {e}")
 
 def main():
-    """ Main function to initiate chatbot interaction. """
+    """Main function to initiate chatbot interaction."""
 
     initial_preferences = get_initial_preferences()
     chat_with_trainer(initial_preferences)
