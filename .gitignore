@@ -9,6 +9,7 @@ env/
 venv/
 ENV/
 .venv/
+pt_env/
 
 # Ignore environment variable files
 .env
