@@ -1,3 +1,7 @@
+"""
+This code file is a prototype for an AI Personal Trainer Streamlit app that uses OpenAI's GPT-4o model to generate workout plans based on user preferences.
+"""
+
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -25,7 +29,7 @@ def main():
     equipment = st.sidebar.selectbox(
         "Available equipment", ["Bodyweight", "Free Weights", "Full Gym"]
     )
-    time_per_day = st.sidebar.slider("Time available per day (minutes)", 10, 120, 30)
+    time_per_day = st.sidebar.slider("Time available per day (minutes)", 10, 120, 60)
     focus_areas = st.sidebar.text_input(
         "Enter focus areas (e.g., cardio, core, arms, legs) separated by commas", ""
     )
@@ -44,13 +48,13 @@ def main():
         st.session_state.preferences = initial_preferences
         st.session_state.conversation = []
 
-        st.success("Preferences submitted! Generating your initial plan...")
+        st.success("Preferences submitted successfully! You can now chat with your AI Trainer.") 
 
         # Prepare initial conversation
         preferences = st.session_state.preferences
         initial_message = {
             "role": "system",
-            "content": "You are a world-famous personal fitness trainer. Provide fitness guidance and generate workout plans based on user inputs."
+            "content": "You are a world-famous personal fitness trainer. Provide fitness guidance and generate workout plans based on user inputs." # establish persona for AI (using CRAFT)
         }
         user_message = {
             "role": "user",
@@ -64,14 +68,14 @@ def main():
         # Add messages to session conversation
         st.session_state.conversation = [initial_message, user_message]
         
-        with st.spinner("Generating your initial plan..."):
+        with st.spinner("Generating your initial workout plan..."):
             response = client.chat.completions.create(
                 messages=st.session_state.conversation,
-                model="gpt-4o"
+                model="gpt-4o" # or use another available model like "gpt-3.5turbo"
             )
         bot_reply = response.choices[0].message.content.strip()
 
-        # Append the bot's response to the conversation
+        # Append bot's response to conversation
         st.session_state.conversation.append({"role": "assistant", "content": bot_reply})
 
     # Chat Interface
@@ -87,7 +91,7 @@ def main():
                 elif message["role"] == "assistant":
                     st.chat_message("assistant").write(message["content"])
 
-        # Add user input at the bottom
+        # Add user input at bottom
         def send_message():
             user_input = st.session_state.user_input
             if user_input:
@@ -95,7 +99,7 @@ def main():
                 with message_container:
                     st.chat_message("user").write(user_input)
 
-                # Indicate that the bot is generating an answer
+                # Indicate that bot is generating answer
                 with st.spinner("Generating answer..."):
                     try:
                         response = client.chat.completions.create(
@@ -109,10 +113,10 @@ def main():
                     except Exception as e:
                         st.error(f"An error occurred: {e}")
                     finally:
-                        # Clear the input box
+                        # Clear input box
                         st.session_state.user_input = ""
 
-        # Add a text input for messages with an `on_change` callback
+        # Add text input for messages with `on_change` callback
         st.text_input("Type your message:", key="user_input", on_change=send_message)
 
 if __name__ == "__main__":
