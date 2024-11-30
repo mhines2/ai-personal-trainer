@@ -9,7 +9,6 @@ env/
 venv/
 ENV/
 .venv/
-pt_env/
 
 # Ignore environment variable files
 .env
@@ -62,3 +61,9 @@ htmlcov/
 .pyre/
 bandit.yaml
 flake8.log
+
+# Ignore node modules
+node_modules/
+ai_pt/node_modules/
+
+
