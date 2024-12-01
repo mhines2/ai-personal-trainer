@@ -1,5 +1,7 @@
 """
-This code file is a prototype for an AI Personal Trainer Streamlit app that uses OpenAI's GPT-4o model to generate workout plans based on user preferences.
+This code file is a prototype for an AI Personal Trainer app that uses:
+    - Streamlit for GUI (no front-end design required)
+    - OpenAI's GPT-4 model for generating workout plans based on user preferences
 """
 
 import os
