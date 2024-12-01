@@ -1,105 +1,106 @@
-# AI Personal Trainer
+# AI Personal Trainer App Prototype
 
-The **AI Personal Trainer** is a Python application that generates personalized workout plans based on user preferences. It uses OpenAI's GPT models to create safe, effective, and goal-oriented fitness routines.
+This repository contains the prototype for the **AI Personal Trainer App**, an interactive chatbot application designed to provide personalized fitness guidance and workout plans based on user preferences. The prototype uses **Streamlit** for a simple GUI and **OpenAI's GPT-4 model** for generating workout recommendations.
 
-**Created by Michael Hines**
+---
 
 ## Features
 
-- **Interactive Input**: Users provide details like fitness level, goals, available equipment, and time constraints.
-- **Personalized Plans**: AI generates a workout tailored to the user's needs and preferences.
-- **Secure**: API keys are managed securely using a `.env` file.
+1. **User-Friendly Interface**:
+   - A sidebar allows users to input their fitness preferences, including name, fitness level, goals, equipment, time available, focus areas, and any injuries.
+2. **Interactive Chat**:
 
-## Installation and Setup
+   - Users can engage in a dynamic chat with the AI Personal Trainer to receive customized workout advice.
 
-### Prerequisites
+3. **AI-Generated Responses**:
 
-- Python 3.8 or higher
-- OpenAI API key (get one from the [OpenAI Platform](https://platform.openai.com/))
+   - The app leverages OpenAI's GPT-4 to generate personalized fitness guidance based on user inputs.
 
-### Steps
+4. **Streamlit Integration**:
+   - Provides a lightweight, interactive UI for quick prototyping without the need for front-end design.
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/<your-username>/<repository-name>.git
-    cd <repository-name>
-    ```
+---
 
-2. Set up a virtual environment:
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
+## How It Works
 
-3. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+1. Users input their fitness preferences via a sidebar form.
+2. On submission, the app initializes a conversation with the AI Trainer.
+3. The AI generates an initial workout plan tailored to the user.
+4. Users can chat with the AI Trainer to ask follow-up questions or request modifications to their plan.
 
-4. Create a `.env` file and add your OpenAI API key:
-    ```plaintext
-    OPENAI_API_KEY=your-api-key
-    ```
+---
 
-5. Run the script:
-    ```bash
-    python fitness_assistant.py
-    ```
+## Technologies Used
 
-## Usage
+### Current Prototype
 
-1. Run the script in your terminal.
-2. Enter your fitness preferences when prompted:
-    - **Fitness level** (e.g., beginner, intermediate, advanced)
-    - **Fitness goal** (e.g., weight loss, muscle gain)
-    - **Equipment availability** (e.g., bodyweight, free weights)
-    - **Time per day** (in minutes)
-    - **Any injuries or special considerations**
+- **Streamlit**: A Python framework for creating interactive GUIs.
+- **OpenAI API**: Used to access GPT-4 for generating personalized responses.
+- **Python**: The core language for implementing the app's logic.
+- **dotenv**: For managing API keys and environment variables securely.
 
-3. Receive a personalized workout plan directly in the terminal.
+---
 
-### Example Output
+## Scalability and Future Plans
 
-```plaintext
-Welcome to the AI Personal Trainer!
+This prototype is designed as a foundation for a full-stack application. The project is highly scalable and intended to evolve into a robust platform with the following components:
 
-Enter your name: John
-Enter your fitness level (beginner/intermediate/advanced): beginner
-Enter your fitness goal (e.g., weight loss, muscle gain, general fitness): weight loss
-Enter available equipment (e.g., bodyweight, free-weights, full gym): bodyweight
-Enter the time you can dedicate per day (in minutes): 30
-Enter focus areas (e.g., cardio, core, arms, legs) separated by commas: cardio, core
-Any injuries to consider (type 'none' if no injuries): none
+### Back-End
 
-Generating your initial personalized workout plan...
+- **Flask**: To handle API requests, manage user data, and serve as the back-end server.
+- **Database**: Integration with a database (e.g., PostgreSQL, MongoDB) to store user preferences, workout history, and progress tracking data.
+- **Authentication**: Implement secure user authentication and authorization.
 
-Here is your initial workout plan:
---------------------------------------------------
-- Warm-up: 5 minutes of light jogging in place
-- Circuit Training (repeat 3 times):
-  1. Push-ups: 10 reps
-  2. Bodyweight squats: 15 reps
-  3. Plank: 30 seconds
-  4. Mountain climbers: 20 seconds
-- Cool-down: 5 minutes of stretching
---------------------------------------------------
+### Front-End
 
-You: Can you add more focus on core exercises?
+- **React**: Build a dynamic, responsive client interface with modern UI/UX design.
+- **Material-UI or Tailwind CSS**: For styling and layout improvements.
 
-Trainer: Sure! Here's an updated plan focusing on your core:
-- Warm-up: 5 minutes of dynamic stretches
-- Core Circuit (repeat 3 times):
-  1. Plank: 45 seconds
-  2. Side planks: 30 seconds per side
-  3. Bicycle crunches: 20 reps
-  4. Russian twists: 15 reps per side
-- Cool-down: 5 minutes of stretching (focus on abs and lower back)
+### Additional Features
 
-You: What should I eat before a workout?
+- **User Accounts**: Allow users to register, log in, and save their workout preferences and progress.
+- **Progress Tracking**: Enable users to track their workouts, weight, and goals over time.
+- **Push Notifications**: Send reminders and motivational messages to users.
+- **Custom Workout Scheduling**: Allow users to create and edit workout schedules.
 
-Trainer: For a pre-workout meal, consider eating a mix of carbs and protein, like a banana with peanut butter or a small bowl of oatmeal with fruit. Avoid heavy or greasy foods.
+---
 
-You: exit
+## How to Run the Prototype
 
-Goodbye! Stay active and healthy!
+1. Clone this repository:
 
+   ```bash
+   git clone https://github.com/mhines2/ai-personal-trainer.git
+   cd ai-personal-trainer/prototypes
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Create a `.env` file in the root directory and add your OpenAI API key:
+
+   ```plaintext
+   OPENAI_API_KEY=your_openai_api_key
+   ```
+
+4. Run the app:
+
+   ```bash
+   streamlit run ai_trainer.app.py
+   ```
+
+5. Open the app in your browser (typically at http://localhost:8501) to start interacting with the AI Personal Trainer.
+
+---
+
+## Acknowledgments
+
+- **OpenAI**: For providing GPT-4, the core of this project’s AI functionality.
+- **Streamlit**: For enabling rapid prototyping with an easy-to-use Python-based GUI framework.
+
+---
+
+This project is in its prototype phase and will evolve significantly. Stay tuned for updates! 🚀
