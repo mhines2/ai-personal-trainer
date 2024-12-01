@@ -64,6 +64,5 @@ flake8.log
 
 # Ignore node modules
 node_modules/
-ai_pt/node_modules/
 
 
