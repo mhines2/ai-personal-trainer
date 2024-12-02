@@ -1,7 +1,7 @@
 """
 This code file is a prototype for an AI Personal Trainer app that uses:
     - Streamlit for GUI (no front-end design required)
-    - OpenAI's GPT-4 model for generating workout plans based on user preferences
+    - OpenAI's API for generating workout plans based on user preferences
 """
 
 import os
@@ -19,7 +19,7 @@ client = OpenAI(
 
 # Streamlit App
 def main():
-    st.set_page_config(page_title="AI Personal Trainer", layout="wide")
+    st.set_page_config(page_title="AI Personal Trainer", layout="wide") # set page title and layout
     st.title("AI Personal Trainer 🤖💪")
     
     # Sidebar for user preferences
@@ -31,13 +31,13 @@ def main():
     equipment = st.sidebar.selectbox(
         "Available equipment", ["Bodyweight", "Free Weights", "Full Gym"]
     )
-    time_per_day = st.sidebar.slider("Time available per day (minutes)", 10, 120, 60)
+    time_per_day = st.sidebar.slider("Time available per day (minutes)", 10, 120, 60) # min, max, default
     focus_areas = st.sidebar.text_input(
         "Enter focus areas (e.g., cardio, core, arms, legs) separated by commas", ""
     )
-    injury = st.sidebar.text_input("Injury considerations (leave blank if none)", "None")
+    injury = st.sidebar.text_input("Injury considerations (leave blank if none)", "none") # default to "none"
     
-    if st.sidebar.button("Submit Preferences"):
+    if st.sidebar.button("Submit Preferences"): # store preferences in session state
         initial_preferences = {
             "name": name,
             "fitness_level": fitness_level.lower(),
@@ -48,9 +48,9 @@ def main():
             "injury": injury.lower()
         }
         st.session_state.preferences = initial_preferences
-        st.session_state.conversation = []
+        st.session_state.conversation = [] # initialize conversation list
 
-        st.success("Preferences submitted successfully! You can now chat with your AI Trainer.") 
+        st.success("Preferences submitted successfully! You can now chat with your AI Trainer.")  
 
         # Prepare initial conversation
         preferences = st.session_state.preferences
@@ -75,10 +75,10 @@ def main():
                 messages=st.session_state.conversation,
                 model="gpt-4o" # or use another available model like "gpt-3.5turbo"
             )
-        bot_reply = response.choices[0].message.content.strip()
+        bot_reply = response.choices[0].message.content.strip() 
 
         # Append bot's response to conversation
-        st.session_state.conversation.append({"role": "assistant", "content": bot_reply})
+        st.session_state.conversation.append({"role": "assistant", "content": bot_reply}) 
 
     # Chat Interface
     if "preferences" in st.session_state:
@@ -102,7 +102,7 @@ def main():
                     st.chat_message("user").write(user_input)
 
                 # Indicate that bot is generating answer
-                with st.spinner("Generating answer..."):
+                with st.spinner("Generating answer..."): # for some reason, spinner does not show up but when I remove spinner, it generates conversation twice
                     try:
                         response = client.chat.completions.create(
                             messages=st.session_state.conversation,
