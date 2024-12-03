@@ -64,7 +64,3 @@ flake8.log
 
 # Ignore node modules
 node_modules/
-
-# Ignore Docker
-.devcontainer
-devcontainer.json
