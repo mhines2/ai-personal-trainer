@@ -67,3 +67,4 @@ node_modules/
 
 # Ignore Docker
 .devcontainer
+devcontainer.json
