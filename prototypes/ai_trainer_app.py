@@ -5,15 +5,15 @@ This code file is a prototype for an AI Personal Trainer app that uses:
 """
 
 import os
-from dotenv import load_dotenv
-from openai import OpenAI
+import dotenv
+import openai
 import streamlit as st
 
 # Load environment variables from .env file
-load_dotenv()
+dotenv.load_dotenv()
 
 # Instantiate OpenAI client
-client = OpenAI(
+client = openai.OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY")  # ensure your API key is in .env file
 )
 
@@ -31,6 +31,7 @@ def main():
     equipment = st.sidebar.selectbox(
         "Available equipment", ["Bodyweight", "Free Weights", "Full Gym"]
     )
+    day_split = st.sidebar.slider("Number of days per week (to work out)", 1, 7, 4) # min, max, default
     time_per_day = st.sidebar.slider("Time available per day (minutes)", 10, 120, 60) # min, max, default
     focus_areas = st.sidebar.text_input(
         "Enter focus areas (e.g., cardio, core, arms, legs) separated by commas", ""
@@ -43,6 +44,7 @@ def main():
             "fitness_level": fitness_level.lower(),
             "goal": goal.lower(),
             "equipment": equipment.lower(),
+            "day_split": day_split,
             "time_per_day": time_per_day,
             "focus_areas": [area.strip().lower() for area in focus_areas.split(",") if area.strip()],
             "injury": injury.lower()
@@ -63,10 +65,12 @@ def main():
             "content": f"""
             My name is {preferences['name']}.
             I am a {preferences['fitness_level']} level user with a goal of {preferences['goal']}.
-            I have {preferences['equipment']} available, and I can work out for {preferences['time_per_day']} minutes per day.
+            I have {preferences['equipment']} available, and I plan to work out {preferences['day_split']} days per week.
+            I can work out for {preferences['time_per_day']} minutes per day.
             My focus areas are {', '.join(preferences['focus_areas'])}, and I have the following injury considerations: {preferences['injury']}.
             """
         }
+
         # Add messages to session conversation
         st.session_state.conversation = [initial_message, user_message]
         
