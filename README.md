@@ -4,6 +4,12 @@ This repository contains the prototype for the **AI Personal Trainer App**, an i
 
 ---
 
+## App URL
+
+Access the app here: [AI Personal Trainer App](https://ai-personal-trainer1.streamlit.app/)
+
+---
+
 ## Features
 
 1. **User-Friendly Interface**:
